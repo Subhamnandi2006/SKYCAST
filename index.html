@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SKYCAST | Weather Intelligence</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <i data-lucide="cloud-sun"></i>
+                <span>SKYCAST</span>
+            </div>
+
+            <div class="sidebar-menu">
+
+                <p class="menu-label">MENU</p>
+
+                <a href="#dashboard" class="menu-item active">
+                    <i data-lucide="layout-dashboard"></i>
+                    Dashboard
+                </a>
+
+                <a href="#forecast" class="menu-item">
+                    <i data-lucide="calendar-days"></i>
+                    Forecast
+                </a>
+
+                <a href="#map" class="menu-item">
+                    <i data-lucide="map"></i>
+                    Weather Map
+                </a>
+
+                <a href="#air-quality" class="menu-item">
+                    <i data-lucide="wind"></i>
+                    Air Quality
+                </a>
+
+                <p class="menu-label location-label">LOCATIONS</p>
+
+                <div id="favoriteList">
+                    <p class="empty-favorites">
+                        No favourite cities yet.
+                    </p>
+                </div>
+
+                <div id="favoriteList">
+                    <p class="empty-favorites">
+                        No favourite cities yet.
+                    </p>
+                </div>
+
+                <div id="favoriteList">
+                    <p class="empty-favorites">
+                        No favourite cities yet.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="upgrade-card">
+                    <i data-lucide="sparkles"></i>
+                    <h3>Skycast Intelligence</h3>
+                    <p>Explore smarter weather insights.</p>
+                    <button id="assistantBtn">Explore AI</button>
+                </div>
+
+                <p class="version">SKYCAST v1.0.0</p>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="dashboard">
+
+            <!-- TOP NAVBAR -->
+            <header class="topbar">
+
+                <div>
+                    <h2>Weather Dashboard</h2>
+                    <p class="subtitle">Welcome to your weather intelligence center.</p>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button class="icon-button" id="unitToggle" title="Switch temperature unit">
+                        °C
+                    </button>
+
+                    <button class="icon-button" id="themeToggle" title="Toggle theme">
+                        <i data-lucide="moon"></i>
+                    </button>
+
+                    <button class="profile-button">
+                        <i data-lucide="user-round"></i>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- SEARCH BAR -->
+            <section class="search-section">
+
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+
+                    <input type="text" id="cityInput" placeholder="Search for a city...">
+
+                    <button id="searchBtn">Search</button>
+                </div>
+
+                <button class="location-button" id="locationBtn">
+                    <i data-lucide="crosshair"></i>
+                    My Location
+                </button>
+
+            </section>
+
+
+            <!-- CURRENT WEATHER -->
+            <section class="weather-hero">
+
+                <div class="weather-info">
+
+                    <div class="location-heading">
+                        <div>
+                            <p class="eyebrow">CURRENT WEATHER</p>
+                            <h1 id="cityName">Kolkata, India</h1>
+                            <p id="currentDate">Loading date...</p>
+                        </div>
+
+                        <div class="weather-actions">
+                            <span class="live-indicator">
+                                <span></span> LIVE
+                            </span>
+
+                            <button id="favoriteBtn" class="favorite-button" title="Add to favourites">
+                                <i data-lucide="star"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="temperature-area">
+
+                        <div>
+                            <h2 id="temperature">28°</h2>
+                            <p id="weatherDescription">Partly Cloudy</p>
+                            <p class="feels-like">
+                                Feels like <span id="feelsLike">31°</span>
+                            </p>
+                        </div>
+
+                        <div class="main-weather-icon">
+                            <i data-lucide="cloud-sun"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="min-max">
+                        <span>
+                            <i data-lucide="arrow-up"></i>
+                            <span id="maxTemp">32°</span>
+                        </span>
+
+                        <span>
+                            <i data-lucide="arrow-down"></i>
+                            <span id="minTemp">25°</span>
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="weather-visual">
+                    <div class="sun-glow"></div>
+                    <div class="weather-circle">
+                        <i data-lucide="cloud-sun"></i>
+                    </div>
+                    <p>Enjoy your day!</p>
+                </div>
+
+            </section>
+
+
+            <!-- WEATHER HIGHLIGHTS -->
+            <section class="section" id="air-quality">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Today's Highlights</h2>
+                        <p>Important weather conditions</p>
+                    </div>
+                </div>
+
+                <div class="highlights-grid">
+
+                    <div class="highlight-card">
+                        <div class="card-top">
+                            <span>Humidity</span>
+                            <i data-lucide="droplets"></i>
+                        </div>
+                        <h3 id="humidity">65%</h3>
+                        <p>Relative humidity</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="card-top">
+                            <span>Wind Speed</span>
+                            <i data-lucide="wind"></i>
+                        </div>
+                        <h3 id="windSpeed">12 km/h</h3>
+                        <p>Wind velocity</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="card-top">
+                            <span>UV Index</span>
+                            <i data-lucide="sun"></i>
+                        </div>
+                        <h3 id="uvIndex">6</h3>
+                        <p>Moderate to high</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="card-top">
+                            <span>Visibility</span>
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <h3 id="visibility">8 km</h3>
+                        <p>Clear visibility</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="card-top">
+                            <span>Pressure</span>
+                            <i data-lucide="gauge"></i>
+                        </div>
+                        <h3 id="pressure">1012 hPa</h3>
+                        <p>Atmospheric pressure</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="card-top">
+                            <span>Air Quality</span>
+                            <i data-lucide="leaf"></i>
+                        </div>
+                        <h3 id="aqi">42</h3>
+                        <p>Good air quality (sample)</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- HOURLY FORECAST -->
+            <section class="section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Hourly Forecast</h2>
+                        <p>Weather throughout the day</p>
+                    </div>
+
+                    <span class="section-tag">Next 24 hours</span>
+                </div>
+
+                <div class="hourly-container" id="hourlyForecast">
+
+                    <!-- Generated using JavaScript -->
+
+                </div>
+
+            </section>
+
+
+            <!-- WEEKLY FORECAST -->
+            <section class="section" id="forecast">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>7-Day Forecast</h2>
+                        <p>Plan your week ahead</p>
+                    </div>
+                </div>
+
+                <div class="weekly-card" id="weeklyForecast">
+
+                    <!-- Generated using JavaScript -->
+
+                </div>
+
+            </section>
+
+
+            <!-- TEMPERATURE CHART -->
+            <section class="section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Temperature Trends</h2>
+                        <p>Temperature variation throughout the day</p>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+
+            </section>
+
+
+            <!-- WEATHER MAP -->
+            <section class="section" id="map">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Weather Map</h2>
+                        <p>Explore weather conditions around the world</p>
+                    </div>
+                </div>
+
+                <div class="map-placeholder">
+                    <i data-lucide="map"></i>
+                    <h3>Interactive Weather Map</h3>
+                    <p>Radar and weather layers will be integrated in a future phase.</p>
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer>
+                <div class="logo footer-logo">
+                    <i data-lucide="cloud-sun"></i>
+                    SKYCAST
+                </div>
+
+                <p>Weather intelligence, simplified.</p>
+
+                <span>© 2026 SKYCAST. All rights reserved.</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

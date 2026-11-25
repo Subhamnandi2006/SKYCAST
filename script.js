@@ -113,7 +113,7 @@ async function loadAirQuality(lat, lon) {
 
         // Request AQI from our own backend
         const data = await fetchJSON(
-            `http://localhost:5000/api/air-quality?${params.toString()}`
+            `https://skycast-backend-qkkk.onrender.com/api/air-quality?${params.toString()}`
         );
 
         // Extract the actual Open-Meteo air-quality data
@@ -196,7 +196,7 @@ async function searchCity(city) {
     try {
 
         const data = await fetchJSON(
-            `http://localhost:5000/api/geocoding?city=${encodeURIComponent(city)}`
+            `https://skycast-backend-qkkk.onrender.com/api/geocoding?city=${encodeURIComponent(city)}`
         );
 
         if (!data.results || data.results.length === 0) {
@@ -254,7 +254,7 @@ async function loadWeather(latitude, longitude) {
 
         // Request weather from our own backend
         const data = await fetchJSON(
-            `http://localhost:5000/api/weather?${params.toString()}`
+            `https://skycast-backend-qkkk.onrender.com/api/weather?${params.toString()}`
         );
 
         // Backend wraps the Open-Meteo response in "weather"

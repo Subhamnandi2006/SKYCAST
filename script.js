@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://skycast-backend-qkkk.onrender.com/";
 
 /* ==========================================
    SKYCAST - REAL WEATHER API INTEGRATION
